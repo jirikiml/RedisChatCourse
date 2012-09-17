@@ -46,4 +46,10 @@ public class RedisFactory
         return ret;
     }
 
+    public IRedisSortedSet createJedisSortedSet()
+    {
+        IRedisSortedSet ret = new RedisSortedSet(jedis);
+        return ret;
+    }
+
 }
