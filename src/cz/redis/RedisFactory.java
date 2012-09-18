@@ -52,4 +52,10 @@ public class RedisFactory
         return ret;
     }
 
+    public IRedisSet createJedisSet()
+    {
+        IRedisSet ret = new RedisSet(jedis);
+        return ret;
+    }
+
 }
