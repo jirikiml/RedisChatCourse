@@ -1,5 +1,6 @@
 package cz.redis.jedis;
 
+import org.junit.After;
 import org.junit.Before;
 
 import cz.redis.IRedisConnection;
@@ -21,6 +22,12 @@ public class JedisRedisHashesTest
         redisConnection = factory.createJedisConnection();
         redisConnection.selectDB(TEST_REDIS_DB);
         redisConnection.flushDB();
+    }
+
+    @After
+    public void tearDown()
+    {
+        redisConnection.quit();
     }
 
 }

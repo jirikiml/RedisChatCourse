@@ -4,44 +4,30 @@ import java.util.Set;
 
 import junit.framework.Assert;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import redis.clients.jedis.Tuple;
-
 import cz.redis.IRedisConnection;
 import cz.redis.IRedisSortedSet;
-import cz.redis.RedisFactory;
 
-public class RedisSortedSetTest
+public class JedisRedisSortedSetTest
+        extends AbstractJedisRedisTest
 {
     private static final String MY_SORTED_SET = "mySortedSet";
-    private static int TEST_REDIS_DB = 1;
     private IRedisSortedSet redisSortedSet;
-    private IRedisConnection redisConnection;
+    IRedisConnection redisConnection;
 
+    @Override
     @Before
     public void setUp()
     {
-        RedisFactory factory = new RedisFactory();
+        super.setUp();
         redisSortedSet = factory.createJedisSortedSet();
-        redisConnection = factory.createJedisConnection();
-        redisConnection.selectDB(TEST_REDIS_DB);
-        redisConnection.flushDB();
         long retVal = redisSortedSet.zadd(MY_SORTED_SET, 10, "ten");
         Assert.assertEquals(1, retVal);
         redisSortedSet.zadd(MY_SORTED_SET, 30, "thirty");
         redisSortedSet.zadd(MY_SORTED_SET, 20, "twenty");
-    }
-
-    @After
-    public void tearDown()
-    {
-        // TODO check quit in other tests as well
-        // maybe I should have one general class to handle such
-        // connect/disconnet/flush
-        redisConnection.quit();
     }
 
     @Test
@@ -65,7 +51,7 @@ public class RedisSortedSetTest
         member = ret.iterator().next();
         Assert.assertEquals(10d, member.getScore());
         Assert.assertEquals("ten", member.getElement());
-    
+
         ret = redisSortedSet.zrange(MY_SORTED_SET, 0, 10);
         Assert.assertEquals("there are only three elements in set", 3, ret.size());
 
