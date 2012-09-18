@@ -1,7 +1,10 @@
 package cz.chat;
 
+import java.util.Set;
+
 import org.apache.commons.lang.Validate;
 
+import redis.clients.jedis.Tuple;
 import cz.redis.IPubSubListener;
 import cz.redis.IRedis;
 import cz.redis.RedisFactory;
@@ -42,7 +45,7 @@ public class RedisClient
     @Override
     public void subscribe(String channel, IPubSubListener listener)
     {
-        redis.zadd(CHANNELS, 0, channel);
+        redis.zincrby(CHANNELS, 1, channel);
         redis.subscribe(channel, listener);
     }
 
@@ -55,6 +58,7 @@ public class RedisClient
     @Override
     public void unSubscribe(String channel)
     {
+        redis.zincrby(CHANNELS, -1, channel);
         redis.unSubscribe(channel);
     }
 
@@ -78,4 +82,15 @@ public class RedisClient
         return ret.intValue();
     }
 
+    @Override
+    public String getAllChannels()
+    {
+        Set<Tuple> allChannels = redis.zrevrange(CHANNELS, 0, -1);
+        String ret = CHANNELS;
+        for (Tuple t : allChannels) {
+            // TODO string builder
+            ret += " " + t.getElement() + "(" + t.getScore() + ")\n";
+        }
+        return ret;
+    }
 }

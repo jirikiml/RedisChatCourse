@@ -12,7 +12,8 @@ import org.apache.commons.lang.StringUtils;
 public class SwingChatGUI
         extends JFrame
 {
-    private static final String CHANNEL = "QQQ";
+    // TODO should be command line parameter
+    private static final String CHANNEL = "MMM";
 
     private static final long serialVersionUID = 6563086133065802861L;
 
@@ -162,7 +163,7 @@ public class SwingChatGUI
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap()));
-        ChatMenuListener menuListener = new ChatMenuListener();
+        ChatMenuListener menuListener = new ChatMenuListener(client, jChatArea);
         ChatMenuCreator menuCreator = new ChatMenuCreator(menuListener);
         JMenuBar menuBar = menuCreator.createMenu();
         setJMenuBar(menuBar);
@@ -188,5 +189,4 @@ public class SwingChatGUI
         gui.addButtonListeners(pubSubListener);
         gui.setVisible(true);
     }
-
 }

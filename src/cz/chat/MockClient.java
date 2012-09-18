@@ -64,4 +64,11 @@ public class MockClient
     {
         return 1;
     }
+
+    @Override
+    public String getAllChannels()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

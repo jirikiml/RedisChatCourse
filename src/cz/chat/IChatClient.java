@@ -22,4 +22,6 @@ public interface IChatClient
 
     public int getNumberOfMessages(String login);
 
+    public String getAllChannels();
+
 }
