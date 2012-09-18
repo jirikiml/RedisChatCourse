@@ -163,8 +163,7 @@ public class SwingChatGUI
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap()));
-        ChatMenuListener menuListener = new ChatMenuListener(client, jChatArea);
-        ChatMenuCreator menuCreator = new ChatMenuCreator(menuListener);
+        ChatMenuCreator menuCreator = new ChatMenuCreator(client, jChatArea);
         JMenuBar menuBar = menuCreator.createMenu();
         setJMenuBar(menuBar);
         pack();

@@ -1,18 +1,29 @@
 package cz.chat;
 
-import java.awt.event.ActionListener;
-
+import javax.annotation.Nonnull;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JTextArea;
+
+import org.apache.commons.lang.Validate;
+
+import cz.chat.actions.AbstractChatAction;
+import cz.chat.actions.AllChannelsAction;
 
 public class ChatMenuCreator
 {
-    private ActionListener listener;
+    private IChatClient client;
+    private JTextArea jChatArea;
 
-    public ChatMenuCreator(ActionListener listener)
+    public ChatMenuCreator(@Nonnull
+    IChatClient client, @Nonnull
+    JTextArea jChatArea)
     {
-        this.listener = listener;
+        Validate.notNull(client);
+        Validate.notNull(jChatArea);
+        this.client = client;
+        this.jChatArea = jChatArea;
     }
 
     public JMenuBar createMenu()
@@ -21,29 +32,34 @@ public class ChatMenuCreator
         JMenu menu = new JMenu("A Menu");
         ret.add(menu);
 
-        JMenuItem menuItem = createMenuItem(ChatMenuActions.ALL_CHANNELS);
+        JMenuItem menuItem = createMenuItem(new AllChannelsAction(client, jChatArea));
         menu.add(menuItem);
-        menuItem = createMenuItem(ChatMenuActions.ALL_CONNECTED_USERS);
+        menuItem = createMenuItem(new AbstractChatAction("all connected users + last message time",
+                client,
+                jChatArea));
         menu.add(menuItem);
-        menuItem = createMenuItem(ChatMenuActions.LAST_TEN_MESSAGES);
+        menuItem = createMenuItem(new AbstractChatAction("last 10 messages", client, jChatArea));
         menu.add(menuItem);
-        menuItem = createMenuItem(ChatMenuActions.USER_BY_DISCONNECT_TIME);
+        menuItem = createMenuItem(new AbstractChatAction("users by time to disconnect",
+                client,
+                jChatArea));
         menu.add(menuItem);
 
-        menuItem = createMenuItem(ChatMenuActions.USERS_BY_ACTIVITY);
+        menuItem = createMenuItem(new AbstractChatAction("users sorted by number of messages",
+                client,
+                jChatArea));
         menu.add(menuItem);
 
         menu.addSeparator();
-        JMenuItem quitItem = createMenuItem(ChatMenuActions.QUIT);
+        JMenuItem quitItem = createMenuItem(new AbstractChatAction("Quit", client, jChatArea));
         menu.add(quitItem);
         return ret;
     }
 
-    public JMenuItem createMenuItem(ChatMenuActions action)
+    // TODO some items should be enabled only if connection is established!
+    public JMenuItem createMenuItem(AbstractChatAction action)
     {
-        JMenuItem menuItem = new JMenuItem(action.getText());
-        menuItem.setName(action.name());
-        menuItem.addActionListener(listener);
+        JMenuItem menuItem = new JMenuItem(action);
         return menuItem;
     }
 
