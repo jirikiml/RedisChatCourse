@@ -3,7 +3,6 @@ package cz.chat.actions;
 import java.awt.event.ActionEvent;
 
 import javax.annotation.Nonnull;
-import javax.annotation.OverridingMethodsMustInvokeSuper;
 import javax.swing.AbstractAction;
 import javax.swing.JTextArea;
 

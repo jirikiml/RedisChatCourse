@@ -107,6 +107,7 @@ public class RedisBasicMock
     @Override
     public void quit()
     {
+        // NOOP
     }
 
     @Override
@@ -118,10 +119,12 @@ public class RedisBasicMock
     @Override
     public void subscribe(String channel, IPubSubListener listener)
     {
+        // NOOP
     }
 
     @Override
     public void unSubscribe(String channel)
     {
+        // NOOP
     }
 }

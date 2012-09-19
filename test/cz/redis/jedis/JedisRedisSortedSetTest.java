@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import redis.clients.jedis.Tuple;
-import cz.redis.IRedisConnection;
 import cz.redis.IRedisSortedSet;
 
 public class JedisRedisSortedSetTest
@@ -16,7 +15,6 @@ public class JedisRedisSortedSetTest
 {
     private static final String MY_SORTED_SET = "mySortedSet";
     private IRedisSortedSet redisSortedSet;
-    IRedisConnection redisConnection;
 
     @Override
     @Before

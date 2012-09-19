@@ -53,11 +53,13 @@ public class JRedisConnection
     @Override
     public void subscribe(String channel, IPubSubListener listener)
     {
+        // NOOP
     }
 
     @Override
     public void unSubscribe(String channel)
     {
+        // NOOP
     }
 
 }

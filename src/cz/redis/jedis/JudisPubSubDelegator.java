@@ -22,6 +22,7 @@ public class JudisPubSubDelegator
     @Override
     public void onPMessage(String pattern, String channel, String message)
     {
+        // NOOP
     }
 
     @Override
@@ -39,11 +40,13 @@ public class JudisPubSubDelegator
     @Override
     public void onPUnsubscribe(String pattern, int subscribedChannels)
     {
+        // NOOP
     }
 
     @Override
     public void onPSubscribe(String pattern, int subscribedChannels)
     {
+        // NOOP
     }
 
 }

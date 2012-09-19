@@ -15,9 +15,7 @@ public class RedisClient
     private IRedis redis;
     private String login;
     private static final String USERS_BY_NUMBER_OF_MESSAGES = "users:by:number:messages";
-    private static final String CONNECTED_USERS = "users:connected";
     private static final String CHANNELS = "channels:all";
-
 
     @Override
     public void connect(String string, int port)
@@ -76,9 +74,9 @@ public class RedisClient
     }
 
     @Override
-    public int getNumberOfMessages(String login)
+    public int getNumberOfMessages(String usr)
     {
-        Double ret = redis.zscore(USERS_BY_NUMBER_OF_MESSAGES, login);
+        Double ret = redis.zscore(USERS_BY_NUMBER_OF_MESSAGES, usr);
         return ret.intValue();
     }
 
@@ -86,11 +84,11 @@ public class RedisClient
     public String getAllChannels()
     {
         Set<Tuple> allChannels = redis.zrevrange(CHANNELS, 0, -1);
-        String ret = CHANNELS;
-        for (Tuple t : allChannels) {
-            // TODO string builder
-            ret += " " + t.getElement() + "(" + t.getScore() + ")\n";
+        StringBuilder ret = new StringBuilder(CHANNELS);
+        for (Tuple t : allChannels)
+        {
+            ret.append(" ").append(t.getElement()).append("(").append(t.getScore()).append(")\n");
         }
-        return ret;
+        return ret.toString();
     }
 }
