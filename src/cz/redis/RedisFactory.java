@@ -4,6 +4,7 @@ import redis.clients.jedis.Jedis;
 import cz.redis.jedis.RedisBasic;
 import cz.redis.jedis.RedisConnection;
 import cz.redis.jedis.RedisHashes;
+import cz.redis.jedis.RedisList;
 import cz.redis.jedis.RedisSet;
 import cz.redis.jedis.RedisSortedSet;
 
@@ -22,9 +23,10 @@ public class RedisFactory
         IRedisBasic basic = new RedisBasic(jedis);
         IRedisHashes hashes = new RedisHashes(jedis);
         IRedisConnection conn = new RedisConnection(jedis);
+        IRedisList list = new RedisList(jedis);
         IRedisSet set = new RedisSet(jedis);
         IRedisSortedSet sortedSet = new RedisSortedSet(jedis);
-        IRedis ret = new Redis(basic, hashes, set, sortedSet, conn);
+        IRedis ret = new Redis(basic, hashes, list, set, sortedSet, conn);
         return ret;
     }
 
@@ -55,6 +57,12 @@ public class RedisFactory
     public IRedisSet createJedisSet()
     {
         IRedisSet ret = new RedisSet(jedis);
+        return ret;
+    }
+
+    public IRedisList createJedisList()
+    {
+        IRedisList ret = new RedisList(jedis);
         return ret;
     }
 

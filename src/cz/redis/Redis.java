@@ -15,23 +15,27 @@ public class Redis
     private IRedisBasic redisBasic;
     private IRedisHashes redisHashes;
     private IRedisConnection redisConnection;
+    private IRedisList redisList;
     private IRedisSet redisSet;
     private IRedisSortedSet redisSortedSet;
 
     public Redis(@Nonnull
     IRedisBasic redisBasic, @Nonnull
     IRedisHashes redisHashes, @Nonnull
+    IRedisList redisList, @Nonnull
     IRedisSet redisSet, @Nonnull
     IRedisSortedSet redisSortedSet, @Nonnull
     IRedisConnection redisConnection)
     {
         Validate.notNull(redisBasic);
         Validate.notNull(redisHashes);
+        Validate.notNull(redisList);
         Validate.notNull(redisSet);
         Validate.notNull(redisSortedSet);
         Validate.notNull(redisConnection);
         this.redisBasic = redisBasic;
         this.redisHashes = redisHashes;
+        this.redisList = redisList;
         this.redisSet = redisSet;
         this.redisSortedSet = redisSortedSet;
         this.redisConnection = redisConnection;
@@ -215,5 +219,41 @@ public class Redis
     public Boolean sismember(String key, String member)
     {
         return redisSet.sismember(key, member);
+    }
+
+    @Override
+    public Long rpush(String key, String... strings)
+    {
+        return redisList.rpush(key, strings);
+    }
+
+    @Override
+    public Long lpush(String key, String... strings)
+    {
+        return redisList.lpush(key, strings);
+    }
+
+    @Override
+    public Long llen(String key)
+    {
+        return redisList.llen(key);
+    }
+
+    @Override
+    public List<String> lrange(String key, long start, long end)
+    {
+        return redisList.lrange(key, start, end);
+    }
+
+    @Override
+    public String ltrim(String key, long start, long end)
+    {
+        return redisList.ltrim(key, start, end);
+    }
+
+    @Override
+    public String lindex(String key, long index)
+    {
+        return redisList.lindex(key, index);
     }
 }
