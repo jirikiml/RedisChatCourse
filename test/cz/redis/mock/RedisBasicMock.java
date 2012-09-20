@@ -17,7 +17,7 @@ public class RedisBasicMock
 
     public RedisBasicMock()
     {
-        redisBasic = new HashMap<String, Object>();
+        redisBasic = new HashMap<>();
     }
 
     @Override

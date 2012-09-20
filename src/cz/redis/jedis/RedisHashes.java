@@ -49,7 +49,7 @@ public class RedisHashes
     @Override
     public String hMSet(String hashName, HashEntry... entries)
     {
-        Map<String, String> entriesAsMap = new LinkedHashMap<String, String>();
+        Map<String, String> entriesAsMap = new LinkedHashMap<>();
         for (HashEntry entry : entries)
         {
             entriesAsMap.put(entry.getKey(), (String)entry.getValue());
@@ -92,7 +92,7 @@ public class RedisHashes
     private List<HashEntry> mapToHashEntriesList(Collection<String> jedisRet, String... hashKeys)
     {
         int size = jedisRet.size();
-        List<HashEntry> ret = new ArrayList<HashEntry>(size);
+        List<HashEntry> ret = new ArrayList<>(size);
         Iterator<String> iter = jedisRet.iterator();
         for (int i = 0; i < size; i++)
         {
