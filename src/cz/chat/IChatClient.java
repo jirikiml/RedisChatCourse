@@ -24,4 +24,6 @@ public interface IChatClient
 
     public String getAllChannels();
 
+    public String getUsersByMessageTime();
+
 }

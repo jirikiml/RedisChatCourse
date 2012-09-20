@@ -10,6 +10,7 @@ import org.apache.commons.lang.Validate;
 
 import cz.chat.actions.AbstractChatAction;
 import cz.chat.actions.AllChannelsAction;
+import cz.chat.actions.UsersByLastMessageTimeAction;
 
 public class ChatMenuCreator
 {
@@ -34,9 +35,7 @@ public class ChatMenuCreator
 
         JMenuItem menuItem = createMenuItem(new AllChannelsAction(client, jChatArea));
         menu.add(menuItem);
-        menuItem = createMenuItem(new AbstractChatAction("all connected users + last message time",
-                client,
-                jChatArea));
+        menuItem = createMenuItem(new UsersByLastMessageTimeAction(client, jChatArea));
         menu.add(menuItem);
         menuItem = createMenuItem(new AbstractChatAction("last 10 messages", client, jChatArea));
         menu.add(menuItem);

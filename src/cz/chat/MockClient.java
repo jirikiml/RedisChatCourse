@@ -71,4 +71,11 @@ public class MockClient
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public String getUsersByMessageTime()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
