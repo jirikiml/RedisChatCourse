@@ -81,6 +81,7 @@ public class RedisHashesMock
     public List<HashEntry> hMGet(String hashName, String... hashKeys)
     {
         Validate.notNull(hashName);
+        // TODO diamond
         List<HashEntry> ret = new ArrayList<HashEntry>();
         for (String key : hashKeys)
         {
