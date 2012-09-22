@@ -49,7 +49,6 @@ public class RedisHashes
     @Override
     public String hMSet(String hashName, HashEntry... entries)
     {
-        // TODO diamond
         Map<String, String> entriesAsMap = new LinkedHashMap<String, String>();
         for (HashEntry entry : entries)
         {
