@@ -31,7 +31,7 @@ public class RedisHashesMock
         Map<String, Object> mapToSet = redisBasic.get(hashName);
         if (mapToSet == null)
         {
-            mapToSet = new HashMap<>();
+            mapToSet = new HashMap<String, Object>();
         }
         Object putRet = mapToSet.put(hashKey, value);
         boolean ret = (putRet == null);
@@ -81,7 +81,7 @@ public class RedisHashesMock
     public List<HashEntry> hMGet(String hashName, String... hashKeys)
     {
         Validate.notNull(hashName);
-        List<HashEntry> ret = new ArrayList<>();
+        List<HashEntry> ret = new ArrayList<HashEntry>();
         for (String key : hashKeys)
         {
             Object value = hGet(hashName, key);
@@ -96,7 +96,7 @@ public class RedisHashesMock
         Validate.notNull(hashName);
         Map<String, Object> map = redisBasic.get(hashName);
         Set<String> ret = map.keySet();
-        return new LinkedHashSet<>(ret);
+        return new LinkedHashSet<String>(ret);
     }
 
     @Override
