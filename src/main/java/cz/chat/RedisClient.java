@@ -23,6 +23,7 @@ public class RedisClient
     @Override
     public void connect(String string, int port)
     {
+        int q = 10;
         RedisFactory factory = new RedisFactory();
         redis = factory.createJedisRedis();
         // TODO add to list of connected users
