@@ -4,3 +4,6 @@
 # *.jar
 *.war
 *.ear
+
+# everything in target directory
+*/target/**
