@@ -7,11 +7,12 @@ import org.junit.Test;
 
 import cz.redis.mock.RedisBasicMock;
 
-
 public class RedisBasicTest
 {
     protected IRedisBasic redis;
     protected IRedisConnection redisConnection;
+    protected final String PREFIX = "" + Thread.currentThread().getId()
+            + System.nanoTime();
 
     @Before
     public void setUp()
@@ -22,7 +23,7 @@ public class RedisBasicTest
     @Test
     public void testGetSet()
     {
-        String key = "myKey";
+        String key = PREFIX + "myKey";
         String value = "myValue";
         redis.set(key, value);
         String retVal = redis.get(key);
@@ -32,7 +33,7 @@ public class RedisBasicTest
     @Test
     public void testStrlen()
     {
-        String key = "myKey";
+        String key = PREFIX + "myKey";
         String value = "myValue";
         redis.set(key, value);
         long retVal = redis.strlen(key);
@@ -49,7 +50,7 @@ public class RedisBasicTest
     @Test
     public void testIncr()
     {
-        String counter = "myCounter";
+        String counter = PREFIX + "myCounter";
         long retVal = redis.incr(counter);
         Assert.assertEquals(1, retVal);
         retVal = redis.incr(counter);
@@ -59,10 +60,11 @@ public class RedisBasicTest
     @Test
     public void testIncrBy()
     {
-        String counter = "IncrByCounter";
+        String counter = PREFIX + "IncrByCounter";
+        System.out.println(counter);
         long retVal = redis.incrBy(counter, 4);
-        Assert.assertEquals(4, retVal);
+        Assert.assertEquals(counter, 4, retVal);
         retVal = redis.incrBy(counter, 2);
-        Assert.assertEquals(6, retVal);
+        Assert.assertEquals(counter, 6, retVal);
     }
 }

@@ -11,13 +11,14 @@ public class JedisRedisHashesTest
         extends RedisHashesTest
 {
     private IRedisConnection redisConnection;
+    private RedisFactory factory;
     private static int TEST_REDIS_DB = 1;
 
     @Override
     @Before
     public void setUp()
     {
-        RedisFactory factory = new RedisFactory();
+        factory = new RedisFactory();
         redis = factory.createJedisHashes();
         redisConnection = factory.createJedisConnection();
         redisConnection.selectDB(TEST_REDIS_DB);
@@ -27,7 +28,7 @@ public class JedisRedisHashesTest
     @After
     public void tearDown()
     {
-        redisConnection.quit();
+        factory.returnResource();
     }
 
 }

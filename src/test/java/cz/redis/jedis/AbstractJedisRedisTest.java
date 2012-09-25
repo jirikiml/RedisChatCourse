@@ -3,11 +3,14 @@ package cz.redis.jedis;
 import org.junit.After;
 import org.junit.Before;
 
+import redis.clients.jedis.Jedis;
+
 import cz.redis.IRedisConnection;
 import cz.redis.RedisFactory;
 
 public abstract class AbstractJedisRedisTest
 {
+    protected final String PREFIX = "" + Thread.currentThread().getId() + System.nanoTime();
     protected static int TEST_REDIS_DB = 1;
     protected IRedisConnection redisConnection;
     protected RedisFactory factory;
@@ -15,10 +18,10 @@ public abstract class AbstractJedisRedisTest
     @Before
     public void setUp()
     {
-        factory = new RedisFactory();
+        Jedis jedis = new Jedis("localhost");
+        factory = new RedisFactory(jedis);
         redisConnection = factory.createJedisConnection();
         redisConnection.selectDB(TEST_REDIS_DB);
-        redisConnection.flushDB();
     }
 
     @After

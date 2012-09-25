@@ -15,7 +15,7 @@ public class JedisRedisSetTest
     private static final String THREE = "three";
     private static final String TWO = "two";
     private static final String ONE = "one";
-    private static final String MY_SET = "my:set";
+    private final String MY_SET = PREFIX + "my:set";
     private IRedisSet redisSet;
 
     @Override

@@ -1,6 +1,7 @@
 package cz.redis;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 import cz.redis.jedis.RedisBasic;
 import cz.redis.jedis.RedisConnection;
 import cz.redis.jedis.RedisHashes;
@@ -11,11 +12,17 @@ import cz.redis.jedis.RedisSortedSet;
 // TODO maybe change me to builder pattern
 public class RedisFactory
 {
+    private static JedisPool pool = new JedisPool("localhost");
     private Jedis jedis;
 
     public RedisFactory()
     {
-        jedis = new Jedis("localhost");
+        jedis = pool.getResource();
+    }
+
+    public RedisFactory(Jedis jedis)
+    {
+        this.jedis = jedis;
     }
 
     public IRedis createJedisRedis()
@@ -66,4 +73,8 @@ public class RedisFactory
         return ret;
     }
 
+    public void returnResource()
+    {
+        pool.returnResource(jedis);
+    }
 }

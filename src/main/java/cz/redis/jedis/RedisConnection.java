@@ -34,6 +34,7 @@ public class RedisConnection
     public void quit()
     {
         jedis.quit();
+        jedis.disconnect();
     }
 
     @Override

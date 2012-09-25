@@ -1,5 +1,6 @@
 package cz.redis.jedis;
 
+import java.util.Random;
 import java.util.Set;
 
 import junit.framework.Assert;
@@ -13,8 +14,9 @@ import cz.redis.IRedisSortedSet;
 public class JedisRedisSortedSetTest
         extends AbstractJedisRedisTest
 {
-    private static final String MY_SORTED_SET = "mySortedSet";
+    private final String MY_SORTED_SET = PREFIX + "mySortedSet";
     private IRedisSortedSet redisSortedSet;
+    private static Random generator = new Random();
 
     @Override
     @Before
@@ -37,6 +39,7 @@ public class JedisRedisSortedSetTest
 
     @Test
     public void testZRange()
+        throws InterruptedException
     {
         Set<Tuple> ret = redisSortedSet.zrange(MY_SORTED_SET, 1, 1);
         Assert.assertEquals(1, ret.size());
@@ -52,6 +55,7 @@ public class JedisRedisSortedSetTest
 
         ret = redisSortedSet.zrange(MY_SORTED_SET, 0, 10);
         Assert.assertEquals("there are only three elements in set", 3, ret.size());
+        //        Thread.sleep(generator.nextInt(30));
 
         ret = redisSortedSet.zrange(MY_SORTED_SET, 5, 10);
         Assert.assertEquals("only three element, 5 to 10 is out of range", 0, ret.size());
