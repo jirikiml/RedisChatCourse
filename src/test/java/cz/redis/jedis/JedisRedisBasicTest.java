@@ -5,6 +5,7 @@ import org.junit.Before;
 
 import redis.clients.jedis.Jedis;
 import cz.redis.RedisBasicTest;
+import cz.redis.RedisConstatnts;
 import cz.redis.RedisFactory;
 
 public class JedisRedisBasicTest
@@ -17,7 +18,7 @@ public class JedisRedisBasicTest
     @Before
     public void setUp()
     {
-        Jedis jedis = new Jedis("localhost");
+        Jedis jedis = new Jedis(RedisConstatnts.REDIS_MASTER);
         factory = new RedisFactory(jedis);
         redis = factory.createJedisBasic();
         redisConnection = factory.createJedisConnection();

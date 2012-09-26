@@ -12,7 +12,7 @@ import cz.redis.jedis.RedisSortedSet;
 // TODO maybe change me to builder pattern
 public class RedisFactory
 {
-    private static JedisPool pool = new JedisPool("localhost");
+    private static JedisPool pool = new JedisPool(RedisConstatnts.REDIS_MASTER);
     private Jedis jedis;
 
     public RedisFactory()

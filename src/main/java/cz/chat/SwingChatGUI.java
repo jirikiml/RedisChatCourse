@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.lang.StringUtils;
 
+import cz.redis.RedisConstatnts;
+
 public class SwingChatGUI
         extends JFrame
 {
@@ -50,7 +52,7 @@ public class SwingChatGUI
                     {
                         pubSubListener.setLogin(login);
                         client.setLogin(login);
-                        SwingChatGUI.this.client.connect("localhost", 6379);
+                        SwingChatGUI.this.client.connect(RedisConstatnts.REDIS_MASTER, RedisConstatnts.REDIS_MASTER_PORT);
                         SwingChatGUI.this.client.selectDB(12);
                         SwingChatGUI.this.client.subscribe(CHANNEL, pubSubListener);
                         handleVisibility(true);

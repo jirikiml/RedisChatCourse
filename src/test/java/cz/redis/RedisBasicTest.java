@@ -11,8 +11,7 @@ public class RedisBasicTest
 {
     protected IRedisBasic redis;
     protected IRedisConnection redisConnection;
-    protected final String PREFIX = "" + Thread.currentThread().getId()
-            + System.nanoTime();
+    protected final String PREFIX = "" + Thread.currentThread().getId() + System.nanoTime();
 
     @Before
     public void setUp()
@@ -23,6 +22,7 @@ public class RedisBasicTest
     @Test
     public void testGetSet()
     {
+        System.out.println(RedisConstatnts.REDIS_MASTER);
         String key = PREFIX + "myKey";
         String value = "myValue";
         redis.set(key, value);
@@ -61,7 +61,6 @@ public class RedisBasicTest
     public void testIncrBy()
     {
         String counter = PREFIX + "IncrByCounter";
-        System.out.println(counter);
         long retVal = redis.incrBy(counter, 4);
         Assert.assertEquals(counter, 4, retVal);
         retVal = redis.incrBy(counter, 2);
