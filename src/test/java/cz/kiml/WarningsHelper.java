@@ -23,6 +23,9 @@ public class WarningsHelper
             person.toCharArray();
         }
         String name = person.toString();
+        ;
+        String a = null;
+        a.toString();
     }
 
 }
