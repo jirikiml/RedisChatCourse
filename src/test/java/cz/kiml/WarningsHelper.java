@@ -26,6 +26,7 @@ public class WarningsHelper
         ;
         String a = null;
         a.toString();
+        a.charAt(0);
     }
 
 }
