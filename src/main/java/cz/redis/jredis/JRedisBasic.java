@@ -16,7 +16,12 @@ public class JRedisBasic
 
     public JRedisBasic()
     {
-        jRedis = new JRedisClient(RedisConstatnts.REDIS_MASTER, RedisConstatnts.REDIS_MASTER_PORT);
+        this(RedisConstatnts.REDIS_MASTER, RedisConstatnts.REDIS_MASTER_PORT);
+    }
+
+    public JRedisBasic(String host, int port)
+    {
+        jRedis = new JRedisClient(host, port);
     }
 
     @Override

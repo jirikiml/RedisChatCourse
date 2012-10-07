@@ -1,6 +1,8 @@
 package cz.redis.jredis;
 
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 import cz.redis.RedisBasicTest;
 
@@ -17,6 +19,13 @@ public class JRedisRedisBasicTest
         redisConnection = new JRedisConnection();
         redisConnection.selectDB(TEST_REDIS_DB);
         redisConnection.flushDB();
+    }
+    
+    @Test
+    public void testException() throws JRedisRuntimeException
+    {
+        JRedisRuntimeException ex = new JRedisRuntimeException(new NullPointerException());
+        Assert.assertTrue(ex.getCause() instanceof NullPointerException);
     }
 
 }
