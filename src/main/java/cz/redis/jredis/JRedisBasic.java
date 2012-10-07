@@ -7,6 +7,7 @@ import org.jredis.ri.alphazero.JRedisClient;
 import org.jredis.ri.alphazero.support.DefaultCodec;
 
 import cz.redis.IRedisBasic;
+import cz.redis.RedisConstatnts;
 
 public class JRedisBasic
         implements IRedisBasic
@@ -15,7 +16,7 @@ public class JRedisBasic
 
     public JRedisBasic()
     {
-        jRedis = new JRedisClient();
+        jRedis = new JRedisClient(RedisConstatnts.REDIS_MASTER, RedisConstatnts.REDIS_MASTER_PORT);
     }
 
     @Override

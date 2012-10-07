@@ -5,6 +5,7 @@ import org.jredis.ri.alphazero.JRedisClient;
 
 import cz.redis.IPubSubListener;
 import cz.redis.IRedisConnection;
+import cz.redis.RedisConstatnts;
 
 public class JRedisConnection
         implements IRedisConnection
@@ -14,7 +15,7 @@ public class JRedisConnection
 
     public JRedisConnection()
     {
-        jRedis = new JRedisClient();
+        jRedis = new JRedisClient(RedisConstatnts.REDIS_MASTER, RedisConstatnts.REDIS_MASTER_PORT);
     }
 
     @Override
