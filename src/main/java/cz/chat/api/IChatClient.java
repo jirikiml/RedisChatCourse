@@ -1,4 +1,4 @@
-package cz.chat;
+package cz.chat.api;
 
 import cz.redis.IPubSubListener;
 

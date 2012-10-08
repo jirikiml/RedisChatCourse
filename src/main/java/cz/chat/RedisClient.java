@@ -7,9 +7,10 @@ import java.util.Set;
 import org.apache.commons.lang.Validate;
 
 import redis.clients.jedis.Tuple;
+import cz.chat.api.IChatClient;
 import cz.redis.IPubSubListener;
 import cz.redis.IRedis;
-import cz.redis.RedisFactory;
+import cz.redis.factory.RedisFactory;
 
 public class RedisClient
         implements IChatClient
@@ -23,7 +24,6 @@ public class RedisClient
     @Override
     public void connect(String string, int port)
     {
-        int q = 10;
         RedisFactory factory = new RedisFactory();
         redis = factory.createJedisRedis();
         // TODO add to list of connected users

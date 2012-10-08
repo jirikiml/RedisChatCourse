@@ -8,7 +8,7 @@ import javax.swing.JTextArea;
 
 import org.apache.commons.lang.Validate;
 
-import cz.chat.IChatClient;
+import cz.chat.api.IChatClient;
 
 public class AbstractChatAction
         extends AbstractAction

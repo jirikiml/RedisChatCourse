@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
+import cz.chat.api.IChatClient;
+
 public class SayButtonActionListener
         implements ActionListener
 {

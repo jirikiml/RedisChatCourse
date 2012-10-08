@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
+
 public interface IRedisHashes
 {
     public boolean hSet(@Nonnull String hashName, String hashKey, Object value);

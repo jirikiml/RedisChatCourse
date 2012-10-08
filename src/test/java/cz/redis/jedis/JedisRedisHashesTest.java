@@ -4,8 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 
 import cz.redis.IRedisConnection;
-import cz.redis.RedisFactory;
 import cz.redis.RedisHashesTest;
+import cz.redis.factory.RedisFactory;
 
 public class JedisRedisHashesTest
         extends RedisHashesTest

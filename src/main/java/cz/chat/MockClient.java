@@ -1,5 +1,6 @@
 package cz.chat;
 
+import cz.chat.api.IChatClient;
 import cz.redis.IPubSubListener;
 
 public class MockClient

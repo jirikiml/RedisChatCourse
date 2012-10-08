@@ -4,10 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 
 import redis.clients.jedis.Jedis;
-
 import cz.redis.IRedisConnection;
 import cz.redis.RedisConstatnts;
-import cz.redis.RedisFactory;
+import cz.redis.factory.RedisFactory;
 
 public abstract class AbstractJedisRedisTest
 {

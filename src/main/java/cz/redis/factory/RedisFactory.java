@@ -1,7 +1,16 @@
-package cz.redis;
+package cz.redis.factory;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import cz.redis.IRedis;
+import cz.redis.IRedisBasic;
+import cz.redis.IRedisConnection;
+import cz.redis.IRedisHashes;
+import cz.redis.IRedisList;
+import cz.redis.IRedisSet;
+import cz.redis.IRedisSortedSet;
+import cz.redis.Redis;
+import cz.redis.RedisConstatnts;
 import cz.redis.jedis.RedisBasic;
 import cz.redis.jedis.RedisConnection;
 import cz.redis.jedis.RedisHashes;

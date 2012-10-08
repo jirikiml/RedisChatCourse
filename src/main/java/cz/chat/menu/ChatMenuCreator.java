@@ -1,4 +1,4 @@
-package cz.chat;
+package cz.chat.menu;
 
 import javax.annotation.Nonnull;
 import javax.swing.JMenu;
@@ -11,6 +11,7 @@ import org.apache.commons.lang.Validate;
 import cz.chat.actions.AbstractChatAction;
 import cz.chat.actions.AllChannelsAction;
 import cz.chat.actions.UsersByLastMessageTimeAction;
+import cz.chat.api.IChatClient;
 
 public class ChatMenuCreator
 {

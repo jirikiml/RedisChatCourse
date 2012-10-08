@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.lang.StringUtils;
 
+import cz.chat.api.IChatClient;
+import cz.chat.menu.ChatMenuCreator;
 import cz.redis.RedisConstatnts;
 
 public class SwingChatGUI

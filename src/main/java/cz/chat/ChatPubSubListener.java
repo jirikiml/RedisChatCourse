@@ -2,6 +2,7 @@ package cz.chat;
 
 import javax.swing.JTextArea;
 
+import cz.chat.api.IChatClient;
 import cz.redis.IPubSubListener;
 
 public class ChatPubSubListener

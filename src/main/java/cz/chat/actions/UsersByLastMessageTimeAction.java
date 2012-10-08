@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JTextArea;
 
-import cz.chat.IChatClient;
+import cz.chat.api.IChatClient;
 
 public class UsersByLastMessageTimeAction
         extends AbstractChatAction

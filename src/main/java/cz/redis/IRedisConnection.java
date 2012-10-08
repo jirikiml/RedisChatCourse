@@ -1,5 +1,6 @@
 package cz.redis;
 
+
 public interface IRedisConnection
 {
     public String selectDB(int dbNumber);

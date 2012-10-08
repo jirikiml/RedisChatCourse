@@ -6,7 +6,7 @@ import org.junit.Before;
 import redis.clients.jedis.Jedis;
 import cz.redis.RedisBasicTest;
 import cz.redis.RedisConstatnts;
-import cz.redis.RedisFactory;
+import cz.redis.factory.RedisFactory;
 
 public class JedisRedisBasicTest
         extends RedisBasicTest
