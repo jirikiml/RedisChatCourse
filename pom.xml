@@ -43,6 +43,14 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+	        <plugin>
+    	      <groupId>org.codehaus.mojo</groupId>
+        	  <artifactId>findbugs-maven-plugin</artifactId>
+	          <version>2.5</version>
+	          <configuration>
+	          	<fork>false</fork>
+	          </configuration>
+    	    </plugin>			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
@@ -57,12 +65,16 @@
 			<plugin>
 				<groupId>com.lazerycode.jmeter</groupId>
 				<artifactId>jmeter-maven-plugin</artifactId>
-				<version>1.4</version>
+				<!-- <version>1.4</version> -->
+				<version>1.5.2-SNAPSHOT</version>
 				<configuration>
 					<testFilesIncluded>
 						<jMeterTestFile>RedisBasicTests.jmx</jMeterTestFile>
 					</testFilesIncluded>
-				</configuration>
+						<propertiesUser>
+                            <threads>10</threads>
+                            <testIterations>5</testIterations>
+                        </propertiesUser>				</configuration>
 				<dependencies>
 					<dependency>
 						<groupId>cz.kiml</groupId>
