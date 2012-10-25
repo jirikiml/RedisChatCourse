@@ -139,6 +139,7 @@
             <stringProp name="junitsampler.append.error">true</stringProp>
             <stringProp name="junitsampler.append.exception">true</stringProp>
             <boolProp name="junitsampler.junit4">true</boolProp>
+            <boolProp name="junitsampler.createinstancepersample">true</boolProp>
           </JUnitSampler>
           <hashTree/>
           <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="testStrlen" enabled="true">
@@ -156,6 +157,7 @@
             <stringProp name="junitsampler.append.error">true</stringProp>
             <stringProp name="junitsampler.append.exception">true</stringProp>
             <boolProp name="junitsampler.junit4">true</boolProp>
+            <boolProp name="junitsampler.createinstancepersample">true</boolProp>
           </JUnitSampler>
           <hashTree/>
           <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="testStrlenDoesNOTExists" enabled="true">
@@ -173,6 +175,7 @@
             <stringProp name="junitsampler.append.error">true</stringProp>
             <stringProp name="junitsampler.append.exception">true</stringProp>
             <boolProp name="junitsampler.junit4">true</boolProp>
+            <boolProp name="junitsampler.createinstancepersample">true</boolProp>
           </JUnitSampler>
           <hashTree/>
           <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="testIncr" enabled="true">
